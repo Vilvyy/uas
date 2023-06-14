@@ -13,6 +13,7 @@ class login extends CI_Controller {
 	}
 
 	public function do_login(){
+
 		$cek['username'] = $this->input->post('form_username');
 		$cek['password'] = $this->input->post('form_password');
 
@@ -23,12 +24,14 @@ class login extends CI_Controller {
 			$level_akun = $row->level;
 
 			$sess_login = array(
-		    	'id'  		=> $data->id,
-		    	'username'  => $data->username,
-		    	'level'		=> $data->level
+		    	'id'  		=> $row->id_user,
+		    	'username'  => $row->username,
+		    	'level'		=> $row->level
 		    );
 
 		    $this->session->set_userdata($sess_login);
+			$this->session->set_flashdata("success", "Berhasil Login");
+
 			
 			if ($level_akun == 'user') {
 				redirect('index.php/menu/menu_index');

@@ -73,13 +73,15 @@
                <td><?=$row->tgl_po?></td>
                <td><?=ucwords($row->stat_po)?></td>
                <td><?=$row->nama_supplier?></td>                 
-               <td><a href="<?=base_url('index.php/menu/detail_po/'.$row->po_no)?>" class="btn btn-primary btn-xs">Detail</a> <a href="<?=base_url('index.php/hapus/hapus_po/'.$row->po_no)?>" class="btn btn-danger btn-xs">Hapus</a>
+               <td><a href="#" class="btn btn-success <?=(($row->stat_po=="paid") ? "disabled btn-md" : "hidden")?>"><b>Paid</b></a>
+                <a href="<?=base_url('index.php/menu/detail_po/'.$row->po_no)?>" class="btn <?=(($row->stat_po=="paid") ? "btn-md btn-primary" : "btn-primary btn-xs")?>">Detail</a> <a href="<?=base_url('index.php/hapus/hapus_po/'.$row->po_no)?>" class="btn <?=(($row->stat_po=="paid") ? "btn-md btn-danger" : "btn-danger btn-xs")?>">Hapus</a>
+                 
                 <p></p>
                 <p><a href="<?=base_url('index.php/status/pending/'.$row->po_no)?>" class="btn btn-xs <?=(($row->stat_po=="paid") ? "hidden" : "btn-warning")?>">Pending</a>
                 <a href="<?=base_url('index.php/status/process/'.$row->po_no)?>" class="btn btn-xs <?=(($row->stat_po=="paid") ? "hidden" : "btn-warning")?>">Process</a>
                 <a href="<?=base_url('index.php/status/delivery/'.$row->po_no)?>" class="btn <?=(($row->stat_po=="paid") ? "hidden" : "btn-warning")?> btn-xs">Delivery</a>
                 <a href="<?=base_url('index.php/status/success/'.$row->po_no)?>" class="btn <?=(($row->stat_po=="paid") ? "hidden" : "btn-warning")?> btn-xs">Success</a> 
-                <a href="<?=base_url('index.php/status/paid/'.$row->po_no)?>" class="btn btn-success <?=(($row->stat_po=="paid") ? "disabled btn-md" : "btn-xs btn-warning")?>">Paid</a> 
+                <a href="<?=base_url('index.php/status/paid/'.$row->po_no)?>" class="btn btn-success <?=(($row->stat_po=="paid") ? "hidden" : "btn-xs btn-warning")?>">Paid</a> 
                 </p>
 
                </td>

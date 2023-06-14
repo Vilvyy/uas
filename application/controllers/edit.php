@@ -10,6 +10,11 @@ class Edit extends CI_Controller {
 	}
 
 	public function edit_supplier(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$id = $this->uri->segment(3);
 		$cek = $this->db->get_where('supplier', array('id_supplier' => $id));
 		if ($cek->num_rows() > 0) {
@@ -43,6 +48,11 @@ class Edit extends CI_Controller {
 	}
 
 	public function edit_barang(){
+			if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$id = $this->uri->segment(3);
 		$cek = $this->db->get_where('barang', array('kode_brg' => $id));
 		if ($cek->num_rows() > 0) {
@@ -79,6 +89,11 @@ class Edit extends CI_Controller {
 	}
 
 	public function edit_user(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$id = $this->uri->segment(3);
 		$cek = $this->db->get_where('users', array('id_user' => $id));
 		if ($cek->num_rows() > 0) {

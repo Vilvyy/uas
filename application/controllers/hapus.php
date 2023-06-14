@@ -9,6 +9,11 @@ class Hapus extends CI_Controller {
 	}
 
 	public function hapus_supplier(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		// 1. dapatkan id yang di kirim
 		$id = $this->uri->segment(3);
 
@@ -30,6 +35,11 @@ class Hapus extends CI_Controller {
 	}
 
 		public function hapus_barang(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		// 1. dapatkan id yang di kirim
 		$id = $this->uri->segment(3);
 
@@ -51,6 +61,11 @@ class Hapus extends CI_Controller {
 	}
 
 		public function hapus_user(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		// 1. dapatkan id yang di kirim
 		$id = $this->uri->segment(3);
 
@@ -72,6 +87,11 @@ class Hapus extends CI_Controller {
 	}	
 
 	public function hapus_po(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		// 1. dapatkan id yang di kirim
 		$id = $this->uri->segment(3);
 
@@ -95,6 +115,11 @@ class Hapus extends CI_Controller {
 	}	
 
 		public function hapus_jual(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		// 1. dapatkan id yang di kirim
 		$id = $this->uri->segment(3);
 

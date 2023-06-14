@@ -61,7 +61,7 @@
           <div class="col-md-6">
             <h3>Nama Barang</h3>
               <select name="kode_brg" class="form-control" required>
-                <option>-- Pilih Status Menu</option>
+                <option>-- Pilih Barang --</option>
             <?php foreach($data_barang->result() as $row) { ?>
                 <option value="<?=$row->kode_brg?>"><?=ucwords($row->nama_brg)?></option>
             <?php } ?>

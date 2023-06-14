@@ -5,6 +5,11 @@ class Tambah extends CI_Controller {
 
 	public function tambah_supplier()
 	{
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$this->load->view('crud/tambah/tambah_supplier.php');
 	}
 
@@ -23,6 +28,11 @@ class Tambah extends CI_Controller {
 
 	public function tambah_barang()
 	{
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$this->load->view('crud/tambah/tambah_barang.php');
 	}
 
@@ -42,6 +52,11 @@ class Tambah extends CI_Controller {
 	}
 
 	public function tambah_user(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$this->load->view('crud/tambah/tambah_user.php');		
 	}
 
@@ -58,6 +73,11 @@ class Tambah extends CI_Controller {
 	}	
 
 	public function tambah_po(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$this->db->select(' supplier.id_supplier,
 							supplier.nama_supplier,');
 		$data['data_supplier'] = $this->db->get('supplier');
@@ -92,6 +112,11 @@ class Tambah extends CI_Controller {
 	}
 
 		public function tambah_jual(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$this->db->select('barang.kode_brg,
 							barang.nama_brg');
 		$data['data_barang'] = $this->db->get('barang');

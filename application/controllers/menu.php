@@ -5,21 +5,41 @@ class Menu extends CI_Controller {
 
 	public function index()
 	{
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$data['data_barang'] = $this->db->get('barang');
 		$this->load->view('menu/index', $data);
 	}
 
 	public function supplier(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$data['data_supplier'] = $this->db->get('supplier');
 		$this->load->view('menu/lihat_supplier', $data);
 	}
 
 		public function pengguna(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$data['data_user'] = $this->db->get('users');
 		$this->load->view('menu/lihat_user.php', $data);
 	}
 
 	public function po(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		
 		$this->db->select('po.no_po as po_no,
 							po.tgl_po,
@@ -34,6 +54,11 @@ class Menu extends CI_Controller {
 	}
 
 	public function detail_po(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		
 		$id = $this->uri->segment(3);
 		$cek = $this->db->get_where('po', array('no_po' => $id));
@@ -68,11 +93,21 @@ class Menu extends CI_Controller {
 	}
 
 	public function jual(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		$data['data_jual'] = $this->db->get('jual');
 		$this->load->view('menu/lihat_jual.php', $data); 
 	}
 
 	public function detail_jual(){
+		if(!$this->session->has_userdata('id')) { 
+			$this->session->set_flashdata("failed", "anda tidak memiliki akses");
+			redirect(base_url());
+		}
+
 		
 		$id = $this->uri->segment(3);
 		$cek = $this->db->get_where('jual', array('no_faktur' => $id));

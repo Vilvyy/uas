@@ -40,6 +40,8 @@
 
  <div class="container">
 
+
+
       <form class="form-signin" action="<?=base_url('index.php/login/do_login')?>" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Username</label>
@@ -54,6 +56,20 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
+      <div>&nbsp;</div>
+
+ 			<?php if($this->session->flashdata("success")){ ?>
+			      		<div class="alert alert-success alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  <strong>Berhasil!</strong> <?=$this->session->flashdata("success")?>
+						</div>
+						<?php } ?>
+						<?php if($this->session->flashdata("failed")){ ?>
+			      		<div class="alert alert-danger alert-dismissible" role="alert">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  <strong>Gagal!</strong> <?=$this->session->flashdata("failed")?>
+						</div>
+			<?php } ?>
     </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
